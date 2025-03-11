@@ -3,8 +3,9 @@
 require([
     "esri/Map",
     "esri/views/MapView",
-    "esri/widgets/Locate"
-], function(Map, MapView, Locate) {
+    "esri/widgets/Locate",
+    "esri/widgets/BasemapToggle"
+], function(Map, MapView, Locate, BasemapToggle) {
 
     // Create the map
     const map = new Map({
@@ -22,26 +23,18 @@ require([
     // Add the Locate widget (Find My Location)
     const locateWidget = new Locate({
         view: view,  // Bind to the map view
-        useHeadingEnabled: false,  // Disable compass rotation
+        //useHeadingEnabled: false,  // Disable compass rotation
         goToLocationEnabled: true  // Automatically center when location is found
     });
 
     // Add the widget to the top-left corner of the UI
     view.ui.add(locateWidget, "top-left");
 
-     // Add basemap toggle
-     const basemapToggle = document.getElementById("basemapToggle");
-     let isTopo = true;  // Track the current basemap
- 
-     basemapToggle.addEventListener("click", function() {
-         if (isTopo) {
-             map.basemap = "hybrid";  // Switch to imagery
-             basemapToggle.style.backgroundImage = "url('https://www.arcgis.com/sharing/rest/content/items/8d91bd39e873417ea21673e0fee87604/info/thumbnail/topographic.jpg')"; // Topo preview
-         } else {
-             map.basemap = "topo-vector";  // Switch back to topo
-             basemapToggle.style.backgroundImage = "url('https://www.arcgis.com/sharing/rest/content/items/ea04811f7d744bba94bbf251f61eaf88/info/thumbnail/imagery_hybrid.jpg')"; // Imagery preview
-         }
-         isTopo = !isTopo;  // Toggle state
-     });
+     // Add basemap toggle widget
+     const basemapToggle = new BasemapToggle({
+        view: view,
+        nextBasemap: "hybrid" // The basemap it toggles to
+    });
+    view.ui.add(basemapToggle, "bottom-right");     
 
 });
