@@ -13,7 +13,7 @@ require([
         container: "viewDiv", // this is where the map will be displayed
         map: map,
         center: [-88.576, 43.984], // Oshkosh, WI
-        zoom: 8 // Adjust zoom level here
+        zoom: 18 // Adjust zoom level here
     });
 
      // Add the Locate widget (Find My Location)
