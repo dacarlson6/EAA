@@ -9,3 +9,19 @@ body, html {
     width: 100vw;
     height: 100vh;
 }
+
+/* Basemap Toggle Button */
+#basemapToggle {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-image: url('https://www.arcgis.com/sharing/rest/content/items/ea04811f7d744bba94bbf251f61eaf88/info/thumbnail/imagery_hybrid.jpg'); /* Initial preview for imagery basemap */
+    background-size: cover;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease-in-out;
+}
