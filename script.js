@@ -1,8 +1,8 @@
 quire([
     "esri/Map",
     "esri/views/MapView",
-    "esri/widgets/Locate"
-], function(Map, MapView, Locate) {
+    //"esri/widgets/Locate"
+], function(Map, MapView) {
 
     // Create the map
     const map = new Map({
