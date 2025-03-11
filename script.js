@@ -4,8 +4,9 @@ require([
     "esri/Map",
     "esri/views/MapView",
     "esri/widgets/Locate",
-    "esri/widgets/BasemapToggle"
-], function(Map, MapView, Locate, BasemapToggle) {
+    "esri/widgets/BasemapToggle",
+    "esri/widgets/Search"
+], function(Map, MapView, Locate, BasemapToggle, Search) {
 
     // Create the map
     const map = new Map({
@@ -35,6 +36,12 @@ require([
         view: view,
         nextBasemap: "hybrid" // The basemap it toggles to
     });
-    view.ui.add(basemapToggle, "bottom-right");     
+    view.ui.add(basemapToggle, "bottom-right");    
+    
+    // Add the Search widget
+    const searchWidget = new Search({
+        view: view
+    });
+    view.ui.add(searchWidget, "top-right");
 
 });
