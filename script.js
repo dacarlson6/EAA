@@ -17,7 +17,7 @@ quire([
         zoom: 16 // Adjust zoom level here
     });
 
-      // Add the Locate widget (Find My Location)
+    /*   // Add the Locate widget (Find My Location)
     const locateWidget = new Locate({
         view: view,  // Bind to the map view
         useHeadingEnabled: false,  // Disable compass rotation
@@ -25,6 +25,6 @@ quire([
     });
 
     // Add the widget to the top-left corner of the UI
-    view.ui.add(locateWidget, "top-left");
+    view.ui.add(locateWidget, "top-left"); */
 
 });
