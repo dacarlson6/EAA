@@ -16,4 +16,14 @@ require([
         zoom: 13 // Adjust zoom level here
     });
 
+     // Add the Locate widget (Find My Location)
+     const locateWidget = new Locate({
+        view: view,  // Bind to the map view
+        useHeadingEnabled: false,  // Disable compass rotation
+        goToLocationEnabled: true  // Center map on user's location
+    });
+
+    // Add the widget to the UI in the top-left corner
+    view.ui.add(locateWidget, "top-left");
+
 });
