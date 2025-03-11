@@ -1,4 +1,6 @@
-quire([
+
+
+require([
     "esri/Map",
     "esri/views/MapView",
     //"esri/widgets/Locate"
