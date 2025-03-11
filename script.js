@@ -17,11 +17,16 @@ quire([
         zoom: 16 // Adjust zoom level here
     });
 
-     // Add the Locate widget (Find My Location)
-     const locateWidget = new Locate({
+      // Add the Locate widget (Find My Location)
+    const locateWidget = new Locate({
         view: view,  // Bind to the map view
-        //useHeadingEnabled: false,  // Disable compass rotation
-        //goToLocationEnabled: true  // Center map on user's location
+        useHeadingEnabled: false,  // Disable compass rotation
+        goToOverride: function(view, location) { // Custom function to center map
+            view.goTo({
+                center: [location.position.longitude, location.position.latitude],
+                zoom: 17
+            });
+        }
     });
 
     // Add the widget to the UI in the top-left corner
