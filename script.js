@@ -12,15 +12,15 @@ require([
     const view = new MapView({
         container: "viewDiv", // this is where the map will be displayed
         map: map,
-        center: [-88.576, 43.984], // Oshkosh, WI
-        zoom: 18 // Adjust zoom level here
+        center: [-88.561, 43.9789], // Boeing Plaza
+        zoom: 16 // Adjust zoom level here
     });
 
      // Add the Locate widget (Find My Location)
      const locateWidget = new Locate({
         view: view,  // Bind to the map view
-        useHeadingEnabled: false,  // Disable compass rotation
-        goToLocationEnabled: true  // Center map on user's location
+        //useHeadingEnabled: false,  // Disable compass rotation
+        //goToLocationEnabled: true  // Center map on user's location
     });
 
     // Add the widget to the UI in the top-left corner
