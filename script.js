@@ -1,7 +1,8 @@
-require([
+quire([
     "esri/Map",
-    "esri/views/MapView"
-], function(Map, MapView) {
+    "esri/views/MapView",
+    "esri/widgets/Locate"
+], function(Map, MapView, Locate) {
 
     // Create the map
     const map = new Map({
