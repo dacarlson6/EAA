@@ -17,7 +17,7 @@ body, html {
     right: 20px;
     width: 60px;
     height: 60px;
-    background-image: url('https://www.arcgis.com/sharing/rest/content/items/ea04811f7d744bba94bbf251f61eaf88/info/thumbnail/imagery_hybrid.jpg'); /* Initial preview for imagery basemap */
+    background-image: url('https://www.arcgis.com/sharing/rest/content/items/ea04811f7d744bba94bbf251f61eaf88/info/thumbnail/imagery.jpg'); /* Initial preview for imagery basemap */
     background-size: cover;
     border: 2px solid white;
     border-radius: 8px;

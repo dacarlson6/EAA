@@ -35,7 +35,7 @@ require([
  
      basemapToggle.addEventListener("click", function() {
          if (isTopo) {
-             map.basemap = "imagery-hybrid";  // Switch to imagery
+             map.basemap = "hybrid";  // Switch to imagery
              basemapToggle.style.backgroundImage = "url('https://www.arcgis.com/sharing/rest/content/items/8d91bd39e873417ea21673e0fee87604/info/thumbnail/topographic.jpg')"; // Topo preview
          } else {
              map.basemap = "topo-vector";  // Switch back to topo
