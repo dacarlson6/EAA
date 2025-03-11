@@ -21,15 +21,10 @@ quire([
     const locateWidget = new Locate({
         view: view,  // Bind to the map view
         useHeadingEnabled: false,  // Disable compass rotation
-        goToOverride: function(view, location) { // Custom function to center map
-            view.goTo({
-                center: [location.position.longitude, location.position.latitude],
-                zoom: 17
-            });
-        }
+        goToLocationEnabled: true  // Automatically center when location is found
     });
 
-    // Add the widget to the UI in the top-left corner
+    // Add the widget to the top-left corner of the UI
     view.ui.add(locateWidget, "top-left");
 
 });
