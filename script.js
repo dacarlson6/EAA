@@ -47,7 +47,7 @@ require([
     // Create and add the Camper Feedback button
     const feedbackButton = document.createElement("button");
     feedbackButton.id = "camperFeedbackButton";
-    feedbackButton.innerText = "Camper Survey";
+    feedbackButton.innerText = "Camping Survey";
     feedbackButton.onclick = function() {
         window.open("https://arcg.is/uWPij1", "_blank"); // Open Survey123 form
     };
