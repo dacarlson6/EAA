@@ -49,7 +49,7 @@ require([
     feedbackButton.id = "camperFeedbackButton";
     feedbackButton.innerText = "Camper Survey";
     feedbackButton.onclick = function() {
-        window.open("https://arcg.is/uWPij1?returnUrl=https://dacarlson6.github.io/EAA/", "_blank");
+        window.open("https://arcg.is/uWPij1", "_blank"); // Open Survey123 form
     };
     
 
