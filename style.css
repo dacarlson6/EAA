@@ -25,3 +25,32 @@ body, html {
     box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     transition: transform 0.2s ease-in-out;
 }
+
+/* EAA-Branded Submit Camper Feedback Button */
+#camperFeedbackButton {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #0079c1; /* EAA Blue */
+    color: white;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s ease;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+}
+
+#camperFeedbackButton:hover {
+    background-color: #005a8d; /* Darker EAA Blue */
+    transform: scale(1.05);
+}
+
+#camperFeedbackButton:active {
+    background-color: #004b6b; /* Even Darker Blue */
+    transform: scale(0.98);
+}
