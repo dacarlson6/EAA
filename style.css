@@ -15,22 +15,20 @@ body, html {
     left: 0;
   }
   
-  /* App Header */
   #appHeader {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #0079c1; /* EAA Blue */
+    background-color: #005493; /* EAA blue */
     color: white;
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 15px 0;
     font-family: Arial, sans-serif;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 16px;
+    text-align: center;
     z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   }
   
   /* Camper Feedback Button */
@@ -107,4 +105,34 @@ body, html {
   .layer-toggle input[type="checkbox"] {
     margin-right: 6px;
   }
+
+  /* Mobile Layout Adjustments */
+@media (max-width: 600px) {
+  #appHeader {
+    font-size: 16px;
+    padding: 6px 12px;
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .esri-ui-top-left {
+    top: 60px !important; /* Push widgets below the header */
+  }
+
+  .esri-ui-top-right {
+    top: 60px !important; /* Push Search widget down */
+  }
+
+  .esri-ui-bottom-right {
+    bottom: 20px !important; /* Ensure basemap toggle is visible */
+  }
+
+  .esri-ui-bottom-left {
+    bottom: 20px !important;
+  }
+}
+
   
