@@ -61,33 +61,43 @@ require([
     const attractionsLayer = new FeatureLayer({
         url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/0",
         title: "Attractions",
-        outFields: ["*"]  // Include this to support popups
+        outFields: ["*"],
+        popupEnabled: true
       });
       
       const amenitiesLayer = new FeatureLayer({
         url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/1",
-        title: "Amenities"
+        title: "Amenities",
+        outFields: ["*"],
+        popupEnabled: true
       });
       
       const areasOfInterestLayer = new FeatureLayer({
         url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/2",
         title: "Areas of Interest",
-        outFields: ["*"]
+        outFields: ["*"],
+        popupEnabled: true
       });
       
       const exhibitHallsLayer = new FeatureLayer({
         url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/3",
-        title: "Exhibit Halls"
+        title: "Exhibit Halls",
+        outFields: ["*"],
+        popupEnabled: true
       });
       
       const parkingAreasLayer = new FeatureLayer({
         url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/4",
-        title: "Parking Areas"
+        title: "Parking Areas",
+        outFields: ["*"],
+        popupEnabled: true
       });
       
       const campingAreasLayer = new FeatureLayer({
         url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/5",
-        title: "Camping Areas"
+        title: "Camping Areas",
+        outFields: ["*"],
+        popupEnabled: true
       });
       
       // Add all layers to the map
@@ -99,12 +109,5 @@ require([
         parkingAreasLayer,
         campingAreasLayer
       ]);
-
-    /* // Add the hosted feature layer
-    const eaaLayer = new FeatureLayer({
-        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer"
-    });
-
-    map.add(eaaLayer); */
 
 });
