@@ -1,5 +1,3 @@
-
-
 require([
     "esri/Map",
     "esri/views/MapView",
@@ -7,84 +5,120 @@ require([
     "esri/widgets/BasemapToggle",
     "esri/widgets/Search",
     "esri/layers/FeatureLayer"
-], function(Map, MapView, Locate, BasemapToggle, Search, FeatureLayer) {
-
+  ], function (Map, MapView, Locate, BasemapToggle, Search, FeatureLayer) {
+  
     // Create the map
     const map = new Map({
-        basemap: "topo-vector"  // Change basemap here
+      basemap: "topo-vector"
     });
-
+  
     // Create the map view
     const view = new MapView({
-        container: "viewDiv", // this is where the map will be displayed
-        map: map,
-        center: [-88.561, 43.9789], // Boeing Plaza
-        zoom: 16 // Adjust zoom level here
+      container: "viewDiv",
+      map: map,
+      center: [-88.561, 43.9789], // Boeing Plaza
+      zoom: 16
     });
-
-    // Add the Locate widget (Find My Location)
+  
+    // Locate widget
     const locateWidget = new Locate({
-        view: view,  // Bind to the map view
-        //useHeadingEnabled: false,  // Disable compass rotation
-        goToLocationEnabled: true  // Automatically center when location is found
+      view: view,
+      goToLocationEnabled: true
     });
-
-    // Add the widget to the top-left corner of the UI
     view.ui.add(locateWidget, "top-left");
-
-     // Add basemap toggle widget
-     const basemapToggle = new BasemapToggle({
-        view: view,
-        nextBasemap: "hybrid" // The basemap it toggles to
+  
+    // Basemap toggle widget
+    const basemapToggle = new BasemapToggle({
+      view: view,
+      nextBasemap: "hybrid"
     });
-    view.ui.add(basemapToggle, "bottom-right");    
-    
-    // Add the Search widget
+    view.ui.add(basemapToggle, "bottom-right");
+  
+    // Search widget
     const searchWidget = new Search({
-        view: view
+      view: view
     });
     view.ui.add(searchWidget, "top-right");
-
-    // Create and add the Camper Feedback button
+  
+    // Camper Feedback button
     const feedbackButton = document.createElement("button");
     feedbackButton.id = "camperFeedbackButton";
     feedbackButton.innerText = "Camping Survey";
-    feedbackButton.onclick = function() {
-        window.open("https://arcg.is/uWPij1", "_blank"); // Open Survey123 form
+    feedbackButton.onclick = function () {
+      window.open("https://arcg.is/uWPij1", "_blank");
     };
-    
-
-    // Add the button to the UI in the bottom-left corner
     view.ui.add(feedbackButton, "bottom-left");
-
-    // Add AGOL Hosted Feature Layer that contains the EAA layers
-    // Feature layers with popup support
-  const layerUrls = [
-    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/0", title: "Attractions" },
-    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/1", title: "Amenities" },
-    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/2", title: "Areas of Interest" },
-    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/3", title: "Exhibit Halls" },
-    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/4", title: "Parking Areas" },
-    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/5", title: "Camping Areas" }
-  ];
   
-  layerUrls.forEach(layerInfo => {
-    const layer = new FeatureLayer({
-      url: layerInfo.url,
-      title: layerInfo.title,
-      outFields: ["*"],
-      popupEnabled: true
-    });
-
-    layer.load().then(() => {
-      // Use AGOL-configured popup or fallback
-      layer.popupTemplate = layer.popupTemplate || layer.createPopupTemplate() || {
+    // Layer list toggle panel
+    const layerListElement = document.getElementById("layerList");
+  
+    // List of hosted feature layers
+    const layerUrls = [
+      {
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/0",
+        title: "Attractions"
+      },
+      {
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/1",
+        title: "Amenities"
+      },
+      {
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/2",
+        title: "Areas of Interest"
+      },
+      {
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/3",
+        title: "Exhibit Halls"
+      },
+      {
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/4",
+        title: "Parking Areas"
+      },
+      {
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/5",
+        title: "Camping Areas"
+      }
+    ];
+  
+    // Load each layer, add to map, and build checkbox
+    layerUrls.forEach(layerInfo => {
+      const layer = new FeatureLayer({
+        url: layerInfo.url,
         title: layerInfo.title,
-        content: "No popup configured for this layer."
-      };
+        outFields: ["*"],
+        popupEnabled: true,
+        visible: true
+      });
+  
+      layer.load().then(() => {
+        // Use AGOL-configured popup or fallback
+        layer.popupTemplate = layer.popupTemplate || layer.createPopupTemplate() || {
+          title: layerInfo.title,
+          content: "No popup configured for this layer."
+        };
+  
+        // Add the layer to the map
+        map.add(layer);
+  
+        // Create checkbox toggle
+        const listItem = document.createElement("li");
+  
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = true;
+        checkbox.id = layerInfo.title;
+        checkbox.addEventListener("change", function () {
+          layer.visible = this.checked;
+        });
+  
+        const label = document.createElement("label");
+        label.htmlFor = layerInfo.title;
+        label.textContent = layerInfo.title;
+  
+        listItem.appendChild(checkbox);
+        listItem.appendChild(label);
+        layerListElement.appendChild(listItem);
+      });
     });
-
-    map.add(layer);
   });
-
-});
+  

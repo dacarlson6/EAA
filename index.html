@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EAA AirVenture Map</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.29/"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EAA AirVenture Map</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css"/>
+  <script src="https://js.arcgis.com/4.29/"></script>
 </head>
 <body>
-    <header id="appHeader">
-        EAA AirVenture Interactive Map
-    </header>
-    <div id="viewDiv"></div>
-    <arcgis-basemap-toggle basemap-id="hybrid" position="bottom-right"></arcgis-basemap-toggle>
-    <script src="script.js"></script>
+  <!-- Header -->
+  <header id="appHeader">
+    EAA AirVenture Interactive Map
+  </header>
+
+  <!-- Map Container -->
+  <div id="viewDiv"></div>
+
+  <!-- Layer Toggle Panel -->
+  <div id="layerTogglePanel" class="layer-toggle expanded">
+    <div id="layerToggleHeader" onclick="toggleLayerPanel()">
+      <strong>Explore EAA ▾</strong>
+    </div>
+    <ul id="layerList"></ul>
+  </div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+
+  <!-- Collapse Toggle Function -->
+  <script>
+    function toggleLayerPanel() {
+      const panel = document.getElementById("layerTogglePanel");
+      panel.classList.toggle("collapsed");
+
+      const header = document.getElementById("layerToggleHeader");
+      header.innerHTML = panel.classList.contains("collapsed")
+        ? "<strong>Explore EAA ▸</strong>"
+        : "<strong>Explore EAA ▾</strong>";
+    }
+  </script>
 </body>
 </html>
+
