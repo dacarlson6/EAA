@@ -58,56 +58,33 @@ require([
     view.ui.add(feedbackButton, "bottom-left");
 
     // Add AGOL Hosted Feature Layer that contains the EAA layers
-    const attractionsLayer = new FeatureLayer({
-        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/0",
-        title: "Attractions",
-        outFields: ["*"],
-        popupEnabled: true
-      });
-      
-      const amenitiesLayer = new FeatureLayer({
-        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/1",
-        title: "Amenities",
-        outFields: ["*"],
-        popupEnabled: true
-      });
-      
-      const areasOfInterestLayer = new FeatureLayer({
-        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/2",
-        title: "Areas of Interest",
-        outFields: ["*"],
-        popupEnabled: true
-      });
-      
-      const exhibitHallsLayer = new FeatureLayer({
-        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/3",
-        title: "Exhibit Halls",
-        outFields: ["*"],
-        popupEnabled: true
-      });
-      
-      const parkingAreasLayer = new FeatureLayer({
-        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/4",
-        title: "Parking Areas",
-        outFields: ["*"],
-        popupEnabled: true
-      });
-      
-      const campingAreasLayer = new FeatureLayer({
-        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/5",
-        title: "Camping Areas",
-        outFields: ["*"],
-        popupEnabled: true
-      });
-      
-      // Add all layers to the map
-      map.addMany([
-        attractionsLayer,
-        amenitiesLayer,
-        areasOfInterestLayer,
-        exhibitHallsLayer,
-        parkingAreasLayer,
-        campingAreasLayer
-      ]);
+    // Feature layers with popup support
+  const layerUrls = [
+    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/0", title: "Attractions" },
+    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/1", title: "Amenities" },
+    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/2", title: "Areas of Interest" },
+    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/3", title: "Exhibit Halls" },
+    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/4", title: "Parking Areas" },
+    { url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/5", title: "Camping Areas" }
+  ];
+  
+  layerUrls.forEach(layerInfo => {
+    const layer = new FeatureLayer({
+      url: layerInfo.url,
+      title: layerInfo.title,
+      outFields: ["*"],
+      popupEnabled: true
+    });
+
+    layer.load().then(() => {
+      // Use AGOL-configured popup or fallback
+      layer.popupTemplate = layer.popupTemplate || layer.createPopupTemplate() || {
+        title: layerInfo.title,
+        content: "No popup configured for this layer."
+      };
+    });
+
+    map.add(layer);
+  });
 
 });
