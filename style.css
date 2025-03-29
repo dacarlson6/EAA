@@ -69,17 +69,21 @@ body, html {
   /* Layer Toggle Panel */
   .layer-toggle {
     position: absolute;
-    top: 110px; /* below search */
-    right: 20px; /* on right */
+    top: 180px; 
+    left: 20px; 
     background: white;
     padding: 10px 15px;
     border-radius: 8px;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
     font-family: Arial, sans-serif;
     font-size: 14px;
-    z-index: 1000;
+    z-index: 500;
     transition: all 0.2s ease-in-out;
+    max-height: 300px;
+    overflow-y: auto;
+    pointer-events: auto;
   }
+  
   
   .layer-toggle.collapsed ul {
     display: none;
