@@ -5,8 +5,9 @@ require([
     "esri/views/MapView",
     "esri/widgets/Locate",
     "esri/widgets/BasemapToggle",
-    "esri/widgets/Search"
-], function(Map, MapView, Locate, BasemapToggle, Search) {
+    "esri/widgets/Search",
+    "esri/layers/FeatureLayer"
+], function(Map, MapView, Locate, BasemapToggle, Search, FeatureLayer) {
 
     // Create the map
     const map = new Map({
@@ -55,5 +56,55 @@ require([
 
     // Add the button to the UI in the bottom-left corner
     view.ui.add(feedbackButton, "bottom-left");
+
+    // Add AGOL Hosted Feature Layer that contains the EAA layers
+    const attractionsLayer = new FeatureLayer({
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/0",
+        title: "Attractions",
+        outFields: ["*"]  // Include this to support popups
+      });
+      
+      const amenitiesLayer = new FeatureLayer({
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/1",
+        title: "Amenities"
+      });
+      
+      const areasOfInterestLayer = new FeatureLayer({
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/2",
+        title: "Areas of Interest",
+        outFields: ["*"]
+      });
+      
+      const exhibitHallsLayer = new FeatureLayer({
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/3",
+        title: "Exhibit Halls"
+      });
+      
+      const parkingAreasLayer = new FeatureLayer({
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/4",
+        title: "Parking Areas"
+      });
+      
+      const campingAreasLayer = new FeatureLayer({
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer/5",
+        title: "Camping Areas"
+      });
+      
+      // Add all layers to the map
+      map.addMany([
+        attractionsLayer,
+        amenitiesLayer,
+        areasOfInterestLayer,
+        exhibitHallsLayer,
+        parkingAreasLayer,
+        campingAreasLayer
+      ]);
+
+    /* // Add the hosted feature layer
+    const eaaLayer = new FeatureLayer({
+        url: "https://services7.arcgis.com/KzpywwCur5HGJXqP/arcgis/rest/services/EAA/FeatureServer"
+    });
+
+    map.add(eaaLayer); */
 
 });
