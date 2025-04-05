@@ -1,24 +1,15 @@
-/* Reset default margins and set map size */
-body, html {
+/* Reset default margins and set full viewport */
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
+  overflow: hidden;
 }
 
-/* Main Map Container */
-#viewDiv {
-  width: 100vw;
-  height: calc(100vh - 50px); /* Offset by header height */
-  position: absolute;
-  top: 50px;
-  left: 0;
-}
-
+/* Header */
 #appHeader {
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: 50px;
+  line-height: 50px;
   width: 100%;
   background-color: #0079c1; /* EAA blue */
   color: white;
@@ -31,12 +22,18 @@ body, html {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
+/* Map container fills remaining screen */
+#viewDiv {
+  height: calc(100vh - 50px); /* 50px offset for header */
+  width: 100%;
+}
+
 /* Camper Feedback Button */
 #camperFeedbackButton {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  background-color: #0079c1; /* EAA Blue */
+  background-color: #0079c1;
   color: white;
   font-weight: bold;
   border: none;
@@ -48,27 +45,11 @@ body, html {
   z-index: 1000;
 }
 
-/* Basemap Toggle Button (if using thumbnail style toggle) */
-#basemapToggle {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background-image: url('https://www.arcgis.com/sharing/rest/content/items/ea04811f7d744bba94bbf251f61eaf88/info/thumbnail/imagery.jpg');
-  background-size: cover;
-  border: 2px solid white;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease-in-out;
-}
-
 /* Layer Toggle Panel */
 .layer-toggle {
   position: absolute;
-  top: 180px; 
-  left: 20px; 
+  top: 130px;
+  left: 20px;
   background: white;
   padding: 10px 15px;
   border-radius: 8px;
@@ -76,12 +57,10 @@ body, html {
   font-family: Arial, sans-serif;
   font-size: 14px;
   z-index: 500;
-  transition: all 0.2s ease-in-out;
   max-height: 300px;
   overflow-y: auto;
   pointer-events: auto;
 }
-
 
 .layer-toggle.collapsed ul {
   display: none;
@@ -106,31 +85,46 @@ body, html {
   margin-right: 6px;
 }
 
-/* Mobile Layout Adjustments */
+/* Mobile Layout Enhancements */
 @media (max-width: 600px) {
-#appHeader {
-  font-size: 16px;
-  padding: 6px 12px;
-  text-align: center;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
+  #appHeader {
+    font-size: 16px;
+    padding: 8px 12px;
+    text-align: center;
+    height: 50px;
+  }
 
-.esri-ui-top-left {
-  top: 60px !important; /* Push widgets below the header */
-}
+  .esri-ui-top-left > .esri-component,
+  .esri-ui-top-right > .esri-component {
+    margin-top: 10px !important; /* Adjust spacing under header */
+  }
 
-.esri-ui-top-right {
-  top: 60px !important; /* Push Search widget down */
-}
+  .esri-ui-top-left {
+    top: 60px !important;
+  }
 
-.esri-ui-bottom-right {
-  bottom: 20px !important; /* Ensure basemap toggle is visible */
-}
+  .esri-ui-top-right {
+    top: 60px !important;
+  }
 
-.esri-ui-bottom-left {
-  bottom: 20px !important;
-}
+  .esri-ui-bottom-left,
+  .esri-ui-bottom-right {
+    bottom: 20px !important;
+  }
+
+  /* Layer toggle panel better for small screens */
+  .layer-toggle {
+    top: 120px !important;
+    left: 10px;
+    right: 10px;
+    max-width: 90%;
+    width: auto;
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  #camperFeedbackButton {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
 }
