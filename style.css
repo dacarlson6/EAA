@@ -7,11 +7,11 @@ html, body {
 }
 
 /* Header */
-#appHeader {
+/* #appHeader {
   height: 50px;
   line-height: 50px;
   width: 100%;
-  background-color: #0079c1; /* EAA blue */
+  background-color: #0079c1; /* EAA blue
   color: white;
   font-family: Arial, sans-serif;
   font-size: 18px;
@@ -20,13 +20,41 @@ html, body {
   text-align: center;
   z-index: 1000;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+} */ 
+
+#appHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #0079c1;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Map container fills remaining screen */
+
+/*Map container fills remaining screen
 #viewDiv {
-  height: calc(100vh - 50px); /* 50px offset for header */
+  height: calc(100vh - 50px); 50px offset for header
   width: 100%;
+} */
+
+#viewDiv {
+  height: calc(100vh - 50px);
+  width: 100%;
+  margin-top: 50px; /* Push it down below header */
+  position: relative;
 }
+
+
 
 /* Camper Feedback Button */
 #camperFeedbackButton {
@@ -86,7 +114,7 @@ html, body {
 }
 
 /* Mobile Layout Enhancements */
-@media (max-width: 600px) {
+@media (max-width: 200px) {
   #appHeader {
     font-size: 16px;
     padding: 8px 12px;
@@ -94,9 +122,14 @@ html, body {
     height: 50px;
   }
 
-  .esri-ui {
+  /* .esri-ui {
     top: 50px !important;
+  } */
+
+  .esri-ui-top-left, .esri-ui-top-right {
+    top: calc(50px + 10px) !important; /* Header height + margin */
   }
+  
   
   .esri-ui-bottom-left,
   .esri-ui-bottom-right {
