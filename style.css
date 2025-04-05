@@ -1,138 +1,136 @@
 /* Reset default margins and set map size */
 body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-  }
-  
-  /* Main Map Container */
-  #viewDiv {
-    width: 100vw;
-    height: calc(100vh - 50px); /* Offset by header height */
-    position: absolute;
-    top: 50px;
-    left: 0;
-  }
-  
-  #appHeader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #005493; /* EAA blue */
-    color: white;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px 16px;
-    text-align: center;
-    z-index: 1000;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Camper Feedback Button */
-  #camperFeedbackButton {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background-color: #0079c1; /* EAA Blue */
-    color: white;
-    font-weight: bold;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    font-family: Arial, sans-serif;
-    z-index: 1000;
-  }
-  
-  /* Basemap Toggle Button (if using thumbnail style toggle) */
-  #basemapToggle {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background-image: url('https://www.arcgis.com/sharing/rest/content/items/ea04811f7d744bba94bbf251f61eaf88/info/thumbnail/imagery.jpg');
-    background-size: cover;
-    border: 2px solid white;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  /* Layer Toggle Panel */
-  .layer-toggle {
-    position: absolute;
-    top: 180px; 
-    left: 20px; 
-    background: white;
-    padding: 10px 15px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    z-index: 500;
-    transition: all 0.2s ease-in-out;
-    max-height: 300px;
-    overflow-y: auto;
-    pointer-events: auto;
-  }
-  
-  
-  .layer-toggle.collapsed ul {
-    display: none;
-  }
-  
-  #layerToggleHeader {
-    cursor: pointer;
-    margin-bottom: 5px;
-  }
-  
-  .layer-toggle ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .layer-toggle li {
-    margin-bottom: 5px;
-  }
-  
-  .layer-toggle input[type="checkbox"] {
-    margin-right: 6px;
-  }
-
-  /* Mobile Layout Adjustments */
-@media (max-width: 600px) {
-  #appHeader {
-    font-size: 16px;
-    padding: 6px 12px;
-    text-align: center;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-
-  .esri-ui-top-left {
-    top: 60px !important; /* Push widgets below the header */
-  }
-
-  .esri-ui-top-right {
-    top: 60px !important; /* Push Search widget down */
-  }
-
-  .esri-ui-bottom-right {
-    bottom: 20px !important; /* Ensure basemap toggle is visible */
-  }
-
-  .esri-ui-bottom-left {
-    bottom: 20px !important;
-  }
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
-  
+/* Main Map Container */
+#viewDiv {
+  width: 100vw;
+  height: calc(100vh - 50px); /* Offset by header height */
+  position: absolute;
+  top: 50px;
+  left: 0;
+}
+
+#appHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #005493; /* EAA blue */
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 16px;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Camper Feedback Button */
+#camperFeedbackButton {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: #0079c1; /* EAA Blue */
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+}
+
+/* Basemap Toggle Button (if using thumbnail style toggle) */
+#basemapToggle {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-image: url('https://www.arcgis.com/sharing/rest/content/items/ea04811f7d744bba94bbf251f61eaf88/info/thumbnail/imagery.jpg');
+  background-size: cover;
+  border: 2px solid white;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Layer Toggle Panel */
+.layer-toggle {
+  position: absolute;
+  top: 180px; 
+  left: 20px; 
+  background: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  z-index: 500;
+  transition: all 0.2s ease-in-out;
+  max-height: 300px;
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+
+.layer-toggle.collapsed ul {
+  display: none;
+}
+
+#layerToggleHeader {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.layer-toggle ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.layer-toggle li {
+  margin-bottom: 5px;
+}
+
+.layer-toggle input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+/* Mobile Layout Adjustments */
+@media (max-width: 600px) {
+#appHeader {
+  font-size: 16px;
+  padding: 6px 12px;
+  text-align: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.esri-ui-top-left {
+  top: 60px !important; /* Push widgets below the header */
+}
+
+.esri-ui-top-right {
+  top: 60px !important; /* Push Search widget down */
+}
+
+.esri-ui-bottom-right {
+  bottom: 20px !important; /* Ensure basemap toggle is visible */
+}
+
+.esri-ui-bottom-left {
+  bottom: 20px !important;
+}
+}
