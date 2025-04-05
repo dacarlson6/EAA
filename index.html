@@ -12,23 +12,33 @@
 </head>
 
 <body>
-  <!-- Header -->
-  <header id="appHeader">
-    EAA AirVenture Interactive Map
-  </header>
+  <div class="container-fluid p-0">
+    <!-- Header -->
+    <header id="appHeader" class="text-center text-white py-2">
+      <h1 class="h5 m-0">EAA AirVenture Interactive Map</h1>
+    </header>
 
-  <!-- Map Container -->
-  <div id="viewDiv"></div>
+    <!-- Map + UI -->
+    <div class="position-relative">
+      <!-- Map Container -->
+      <div id="viewDiv"></div>
 
-  <!-- Layer Toggle Panel -->
-  <div id="layerTogglePanel" class="layer-toggle expanded">
-    <div id="layerToggleHeader" onclick="toggleLayerPanel()">
-      <strong>Explore EAA ▾</strong>
+      <!-- Camper Feedback Button -->
+      <button id="camperFeedbackButton" class="btn btn-primary position-absolute">
+        Camping Survey
+      </button>
+
+      <!-- Layer Toggle Panel -->
+      <div id="layerTogglePanel" class="layer-toggle expanded">
+        <div id="layerToggleHeader" onclick="toggleLayerPanel()">
+          <strong>Explore EAA ▾</strong>
+        </div>
+        <ul id="layerList"></ul>
+      </div>
     </div>
-    <ul id="layerList"></ul>
   </div>
 
-  <!-- Script -->
+  <!-- ArcGIS & Script -->
   <script src="script.js"></script>
 
   <!-- Collapse Toggle Function -->
@@ -44,6 +54,7 @@
     }
   </script>
 </body>
+
 
 
 </html>
