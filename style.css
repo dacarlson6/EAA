@@ -1,4 +1,4 @@
-/* Reset default margins and set full viewport */
+
 html, body {
   height: 100%;
   margin: 0;
@@ -40,7 +40,6 @@ html, body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-
 /*Map container fills remaining screen
 #viewDiv {
   height: calc(100vh - 50px); 50px offset for header
@@ -50,11 +49,9 @@ html, body {
 #viewDiv {
   height: calc(100vh - 50px);
   width: 100%;
-  margin-top: 50px; /* Push it down below header */
+  margin-top: 50px;
   position: relative;
 }
-
-
 
 /* Camper Feedback Button */
 #camperFeedbackButton {
@@ -138,7 +135,7 @@ html, body {
 
   /* Refine layer panel position and size */
   .layer-toggle {
-    top: 110px !important;  /* Clear space below Locate & Zoom */
+    top: 110px !important; 
     left: 10px;
     right: 10px;
     max-width: 90%;
